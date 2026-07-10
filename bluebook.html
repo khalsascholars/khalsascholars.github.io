@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Khalsa Scholars Academy — Setting Up Bluebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2D5B;
+    --gold: #C8921A;
+    --gold-light: #E8A820;
+    --cream: #FFF8EE;
+    --cream-dark: #F5EDD8;
+    --steel: #2E5D9E;
+    --dark: #1A1A1A;
+    --grey: #555;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* NAV BAR */
+  .nav {
+    background: var(--navy);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .nav-brand { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
+  .nav-links { display: flex; gap: 8px; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--gold);
+    color: white;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(200,146,26,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(46,93,158,0.3) 0%, transparent 50%);
+  }
+  .khanda {
+    font-size: 4rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 20px;
+    animation: float 4s ease-in-out infinite;
+    position: relative;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(200,146,26,0.2);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: white;
+    line-height: 1.2;
+    max-width: 760px;
+    margin: 0 auto 16px;
+    position: relative;
+  }
+  .hero h1 em {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  /* QUICK FACTS STRIP */
+  .facts-strip {
+    background: var(--gold);
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .fact-item {
+    padding: 14px 28px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.3);
+  }
+  .fact-item:last-child { border-right: none; }
+  .fact-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.8); font-weight: 600; }
+  .fact-value { font-size: 0.9rem; font-weight: 700; color: white; margin-top: 2px; }
+
+  /* MAIN CONTENT */
+  .container { max-width: 860px; margin: 0 auto; padding: 60px 24px; }
+
+  /* INTRO QUOTE */
+  .gurudwara-quote {
+    background: white;
+    border-left: 5px solid var(--gold);
+    padding: 24px 32px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 56px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .gurudwara-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--navy);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* SECTION HEADERS */
+  .section-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--navy);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .section { margin-bottom: 56px; }
+  .section > p { color: var(--dark); font-size: 0.95rem; line-height: 1.7; margin-bottom: 8px; }
+  .section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 24px 0 10px;
+  }
+
+  /* SCHEDULE GRID (label | detail rows) */
+  .how-grid { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+  .how-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+  }
+  .how-item:hover { transform: translateX(4px); }
+  .how-label {
+    background: var(--navy);
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .how-detail {
+    padding: 18px 20px;
+    font-size: 0.9rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    line-height: 1.5;
+  }
+
+  /* TIMELINE (compact two-column time rows) */
+  .timeline { list-style: none; margin: 20px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    background: white;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .timeline li:last-child { border-bottom: none; }
+  .timeline .t-time { padding: 12px 18px; font-weight: 700; color: var(--navy); font-size: 0.9rem; background: var(--cream-dark); }
+  .timeline .t-act { padding: 12px 18px; font-size: 0.9rem; color: var(--dark); display: flex; align-items: center; }
+
+  /* BULLET LIST */
+  .receive-list { list-style: none; margin: 20px 0; }
+  .receive-list li {
+    padding: 12px 0 12px 28px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    color: var(--dark);
+  }
+  .receive-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 15px;
+  }
+  .receive-list li:last-child { border-bottom: none; }
+  .receive-list strong { color: var(--navy); }
+
+  /* TEST LIST (date · label · location) */
+  .test-list { list-style: none; margin: 14px 0; }
+  .test-list li {
+    padding: 12px 16px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .test-date { font-weight: 700; color: var(--navy); }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .badge-room { background: var(--cream-dark); color: var(--navy); }
+  .badge-home { background: var(--gold); color: white; }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+  .callout-gold {
+    background: var(--cream-dark);
+    border-left: 5px solid var(--gold);
+  }
+  .callout-navy {
+    background: var(--navy);
+    color: white;
+  }
+  .callout h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    color: var(--navy);
+  }
+  .callout-navy h3 { color: var(--gold); }
+  .callout p { font-size: 0.95rem; line-height: 1.7; }
+  .callout p + p { margin-top: 10px; }
+  .callout-navy p { color: rgba(255,255,255,0.85); }
+
+  /* CONTACT LIST */
+  .contact-list { list-style: none; margin: 20px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
+  .contact-list li {
+    background: white;
+    border-radius: 8px;
+    padding: 14px 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-left: 3px solid var(--gold);
+  }
+  .contact-grade { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: block; margin-bottom: 3px; }
+  .contact-list a { color: var(--steel); text-decoration: none; font-size: 0.88rem; word-break: break-all; }
+  .contact-list a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 32px 40px;
+    text-align: center;
+    margin-top: 0;
+    border-top: 1px solid rgba(200,146,26,0.3);
+  }
+  .footer-fateh { color: rgba(255,255,255,0.5); font-size: 0.82rem; font-style: italic; margin-bottom: 8px; }
+  .footer-seva { color: var(--gold); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.08em; }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.6s ease forwards;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .nav { padding: 12px 16px; }
+    .nav-links a { font-size: 0.72rem; padding: 5px 10px; }
+    .hero { padding: 50px 20px 40px; }
+    .container { padding: 40px 16px; }
+    .how-item { grid-template-columns: 1fr; }
+    .how-label { justify-content: flex-start; padding: 12px 16px; }
+    .timeline li { grid-template-columns: 110px 1fr; }
+    .facts-strip { justify-content: flex-start; overflow-x: auto; }
+    .fact-item { min-width: 120px; }
+  }
+</style>
+<style>
+  .container ol { margin: 12px 0 10px; padding-left: 24px; }
+  .container ol li { color: var(--dark); font-size: 0.95rem; line-height: 1.7; margin-bottom: 9px; padding-left: 4px; }
+  .container ol li::marker { color: var(--gold); font-weight: 700; }
+  .check-list, .note-list { list-style: none; margin: 12px 0; padding: 0; }
+  .check-list li, .note-list li { position: relative; padding: 6px 0 6px 26px; color: var(--dark); font-size: 0.95rem; line-height: 1.6; }
+  .check-list li::before { content: "\2713"; position: absolute; left: 3px; top: 6px; color: var(--gold); font-weight: 700; }
+  .note-list li::before { content: "\2022"; position: absolute; left: 6px; top: 4px; color: var(--gold); font-weight: 700; }
+  .link-list { list-style: none; margin: 16px 0; padding: 0; }
+  .link-list li { padding: 14px 16px; background: white; border-left: 4px solid var(--gold); border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .link-list .link-label { display: block; font-weight: 700; color: var(--navy); font-size: 0.9rem; margin-bottom: 3px; }
+  .link-list a { color: var(--steel); font-size: 0.9rem; word-break: break-all; text-decoration: none; }
+  .container a.inline { color: var(--steel); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(46,93,158,0.35); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-brand">☬ Khalsa Scholars Academy</span>
+  <div class="nav-links">
+    <a href="index.html">Parents</a>
+    <a href="students.html">Students</a>
+    <a href="math-tutor.html">Math Tutor</a>
+    <a href="english-tutor.html">English Tutor</a>
+    <a href="scholarships.html">Scholarships</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <span class="khanda">☬</span>
+  <div class="hero-tag">Before the practice test · All grades</div>
+  <h1>Setting up <em>Bluebook</em></h1>
+  <p class="hero-sub">A quick, one-time setup so your child is ready for their College Board practice test. Please complete this at home before the session — it saves class time and avoids Wi-Fi and update issues on test day.</p>
+</div>
+
+<div class="container">
+
+  <!-- BEFORE CLASS -->
+  <div class="callout callout-navy fade-in" style="margin-top:28px;">
+    <h3>Before class</h3>
+    <p>Install Bluebook, open it once, and confirm the student can log in — at home, ahead of the session. Bring that same device fully charged, with the charger if possible.</p>
+  </div>
+
+  <!-- IMPORTANT LINKS -->
+  <div class="section fade-in">
+    <div class="section-label">Links</div>
+    <h2>Important links</h2>
+    <ul class="link-list">
+      <li><span class="link-label">Create a College Board student account</span><a href="https://account.collegeboard.org/login/signUp" target="_blank" rel="noopener">account.collegeboard.org/login/signUp</a></li>
+      <li><span class="link-label">Download the Bluebook app</span><a href="https://bluebook.collegeboard.org/students/download-bluebook" target="_blank" rel="noopener">bluebook.collegeboard.org/students/download-bluebook</a></li>
+      <li><span class="link-label">College Board help, if needed</span><a href="https://support.collegeboard.org/" target="_blank" rel="noopener">support.collegeboard.org</a></li>
+    </ul>
+  </div>
+
+  <!-- OPTION A -->
+  <div class="section fade-in">
+    <div class="section-label">Setup</div>
+    <h2>Option A — Student already has a College Board account</h2>
+    <ol>
+      <li>Install the Bluebook app using the download link above.</li>
+      <li>Open the Bluebook app on the laptop or iPad the student will use for the practice test.</li>
+      <li>Click <strong>Sign In / Log In</strong>.</li>
+      <li>Enter the student's College Board username/email and password.</li>
+      <li>After login, confirm the app opens correctly and there are no update or error messages.</li>
+      <li>Keep the login details available for test day.</li>
+    </ol>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="section fade-in">
+    <div class="section-label">Setup</div>
+    <h2>Option B — Student does not have a College Board account</h2>
+    <ol>
+      <li>Go to <a class="inline" href="https://account.collegeboard.org/login/signUp" target="_blank" rel="noopener">account.collegeboard.org</a> and start the sign-up.</li>
+      <li>Choose <strong>Student</strong> when asked what type of account to create.</li>
+      <li>Enter the student's real information: full legal name, date of birth, email address, and school information if requested.</li>
+      <li>Create a username/email and password. Write them down in a safe place.</li>
+      <li>Check the student/parent email inbox for a verification email and complete the step if requested.</li>
+      <li>Download and install Bluebook from the download link above.</li>
+      <li>Open Bluebook and sign in using the newly created College Board student account.</li>
+      <li>Confirm that Bluebook opens properly before coming to class.</li>
+    </ol>
+  </div>
+
+  <!-- DEVICE CHECKLIST -->
+  <div class="section fade-in">
+    <div class="section-label">Test Day</div>
+    <h2>Device checklist</h2>
+    <ul class="check-list">
+      <li>Bring the same device where Bluebook was installed and tested.</li>
+      <li>Charge the device fully before arriving.</li>
+      <li>Bring the charger if possible.</li>
+      <li>Make sure the student knows their College Board login details.</li>
+      <li>Arrive early enough to connect to Wi-Fi and resolve any small issues.</li>
+    </ul>
+  </div>
+
+  <!-- NOTES FOR PARENTS -->
+  <div class="section fade-in">
+    <div class="section-label">Good to Know</div>
+    <h2>Notes for parents</h2>
+    <ul class="note-list">
+      <li>Please create only <strong>one</strong> College Board account per student.</li>
+      <li>Use the student's real name and date of birth, so the account can be used later for PSAT/SAT activities.</li>
+      <li>Bluebook does <strong>not</strong> work on phones. Personal Chromebooks are generally not supported unless they are school-managed.</li>
+      <li>Completing this setup at home saves class time and reduces Wi-Fi and update issues during the session.</li>
+    </ul>
+    <div class="callout callout-gold">
+      <p>Trouble logging in or installing? Reach out to your child's tutor or the CPP team before test day — we're glad to help you get set up.</p>
+    </div>
+  </div>
+
+</div>
+<footer>
+  <div class="footer-fateh">Waheguru Ji Ka Khalsa, Waheguru Ji Ki Fateh</div>
+  <div class="footer-seva">Seva · Charhdi Kala · Sarbat da Bhala</div>
+  <div style="margin-top: 12px; color: rgba(255,255,255,0.4); font-size: 0.78rem;">Program Leader: Prof. Baltej Singh Mann &nbsp;|&nbsp; San Jose Gurudwara Sahib</div>
+</footer>
+
+</body>
+</html>
